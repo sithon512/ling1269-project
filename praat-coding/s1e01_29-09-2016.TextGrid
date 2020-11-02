@@ -1,0 +1,140 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 2957.752358276644 
+tiers? <exists> 
+size = 6 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "Word" 
+        xmin = 0 
+        xmax = 2957.752358276644 
+        intervals: size = 13 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.7749035156249998 
+            text = " " 
+        intervals [2]:
+            xmin = 0.7749035156249998 
+            xmax = 1.1328082031249997 
+            text = "Hello" 
+        intervals [3]:
+            xmin = 1.1328082031249997 
+            xmax = 1.910064223114093 
+            text = "" 
+        intervals [4]:
+            xmin = 1.910064223114093 
+            xmax = 2.227560316864093 
+            text = "know" 
+        intervals [5]:
+            xmin = 2.227560316864093 
+            xmax = 3.2888240995834352 
+            text = "" 
+        intervals [6]:
+            xmin = 3.2888240995834352 
+            xmax = 3.7044553495834354 
+            text = "Open" 
+        intervals [7]:
+            xmin = 3.7044553495834354 
+            xmax = 9.610715611140929 
+            text = "		" 
+        intervals [8]:
+            xmin = 9.610715611140929 
+            xmax = 10.066755454890929 
+            text = "show" 
+        intervals [9]:
+            xmin = 10.066755454890929 
+            xmax = 19.504812835275967 
+            text = "" 
+        intervals [10]:
+            xmin = 19.504812835275967 
+            xmax = 19.654901897775964 
+            text = "go" 
+        intervals [11]:
+            xmin = 19.654901897775964 
+            xmax = 34.58518065929153 
+            text = "" 
+        intervals [12]:
+            xmin = 34.58518065929153 
+            xmax = 34.93731269054154 
+            text = "open" 
+        intervals [13]:
+            xmin = 34.93731269054154 
+            xmax = 2957.752358276644 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "PreConst" 
+        xmin = 0 
+        xmax = 2957.752358276644 
+        intervals: size = 3 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.7749035156249998 
+            text = "" 
+        intervals [2]:
+            xmin = 0.7749035156249998 
+            xmax = 1.1328082031249997 
+            text = "" 
+        intervals [3]:
+            xmin = 1.1328082031249997 
+            xmax = 2957.752358276644 
+            text = "" 
+    item [3]:
+        class = "IntervalTier" 
+        name = "AftConst" 
+        xmin = 0 
+        xmax = 2957.752358276644 
+        intervals: size = 3 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.7749035156249998 
+            text = "" 
+        intervals [2]:
+            xmin = 0.7749035156249998 
+            xmax = 1.1328082031249997 
+            text = "" 
+        intervals [3]:
+            xmin = 1.1328082031249997 
+            xmax = 2957.752358276644 
+            text = "" 
+    item [4]:
+        class = "IntervalTier" 
+        name = "ORaising" 
+        xmin = 0 
+        xmax = 2957.752358276644 
+        intervals: size = 3 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.7749035156249998 
+            text = "" 
+        intervals [2]:
+            xmin = 0.7749035156249998 
+            xmax = 1.1328082031249997 
+            text = "" 
+        intervals [3]:
+            xmin = 1.1328082031249997 
+            xmax = 2957.752358276644 
+            text = "" 
+    item [5]:
+        class = "IntervalTier" 
+        name = "Speaker" 
+        xmin = 0 
+        xmax = 2957.752358276644 
+        intervals: size = 1 
+        intervals [1]:
+            xmin = 0 
+            xmax = 2957.752358276644 
+            text = "" 
+    item [6]:
+        class = "IntervalTier" 
+        name = "Speaker" 
+        xmin = 0 
+        xmax = 2957.752358276644 
+        intervals: size = 1 
+        intervals [1]:
+            xmin = 0 
+            xmax = 2957.752358276644 
+            text = "" 
