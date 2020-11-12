@@ -1,0 +1,96 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 3931.074807256236 
+tiers? <exists> 
+size = 8 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "Word" 
+        xmin = 0 
+        xmax = 3931.074807256236 
+        intervals: size = 3 
+        intervals [1]:
+            xmin = 0 
+            xmax = 600.0041140363682 
+            text = "" 
+        intervals [2]:
+            xmin = 600.0041140363682 
+            xmax = 604.8773438123978 
+            text = "STOP HERE" 
+        intervals [3]:
+            xmin = 604.8773438123978 
+            xmax = 3931.074807256236 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "PreConst" 
+        xmin = 0 
+        xmax = 3931.074807256236 
+        intervals: size = 1 
+        intervals [1]:
+            xmin = 0 
+            xmax = 3931.074807256236 
+            text = "" 
+    item [3]:
+        class = "IntervalTier" 
+        name = "AftConst" 
+        xmin = 0 
+        xmax = 3931.074807256236 
+        intervals: size = 1 
+        intervals [1]:
+            xmin = 0 
+            xmax = 3931.074807256236 
+            text = "" 
+    item [4]:
+        class = "IntervalTier" 
+        name = "StdVowel" 
+        xmin = 0 
+        xmax = 3931.074807256236 
+        intervals: size = 1 
+        intervals [1]:
+            xmin = 0 
+            xmax = 3931.074807256236 
+            text = "" 
+    item [5]:
+        class = "IntervalTier" 
+        name = "ORaising" 
+        xmin = 0 
+        xmax = 3931.074807256236 
+        intervals: size = 1 
+        intervals [1]:
+            xmin = 0 
+            xmax = 3931.074807256236 
+            text = "" 
+    item [6]:
+        class = "IntervalTier" 
+        name = "Speaker" 
+        xmin = 0 
+        xmax = 3931.074807256236 
+        intervals: size = 1 
+        intervals [1]:
+            xmin = 0 
+            xmax = 3931.074807256236 
+            text = "" 
+    item [7]:
+        class = "IntervalTier" 
+        name = "PresentVowel" 
+        xmin = 0 
+        xmax = 3931.074807256236 
+        intervals: size = 1 
+        intervals [1]:
+            xmin = 0 
+            xmax = 3931.074807256236 
+            text = "" 
+    item [8]:
+        class = "IntervalTier" 
+        name = "Stressed" 
+        xmin = 0 
+        xmax = 3931.074807256236 
+        intervals: size = 1 
+        intervals [1]:
+            xmin = 0 
+            xmax = 3931.074807256236 
+            text = "" 
