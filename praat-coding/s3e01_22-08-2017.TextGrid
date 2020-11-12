@@ -11,7 +11,7 @@ item []:
         name = "Word" 
         xmin = 0 
         xmax = 3403.662562358277 
-        intervals: size = 196 
+        intervals: size = 210 
         intervals [1]:
             xmin = 0 
             xmax = 5.591714337257244 
@@ -786,14 +786,70 @@ item []:
             text = "now" 
         intervals [194]:
             xmin = 607.2059897957124 
-            xmax = 630.0021214755532 
+            xmax = 608.4104279143872 
             text = "" 
         intervals [195]:
-            xmin = 630.0021214755532 
-            xmax = 631.9928193818639 
-            text = "STOP HERE" 
+            xmin = 608.4104279143872 
+            xmax = 608.642149363799 
+            text = "now" 
         intervals [196]:
-            xmin = 631.9928193818639 
+            xmin = 608.642149363799 
+            xmax = 608.9476003652965 
+            text = "" 
+        intervals [197]:
+            xmin = 608.9476003652965 
+            xmax = 609.2319857804837 
+            text = "go" 
+        intervals [198]:
+            xmin = 609.2319857804837 
+            xmax = 609.9271501287192 
+            text = "" 
+        intervals [199]:
+            xmin = 609.9271501287192 
+            xmax = 610.2220683370615 
+            text = "though" 
+        intervals [200]:
+            xmin = 610.2220683370615 
+            xmax = 612.1074383118214 
+            text = "" 
+        intervals [201]:
+            xmin = 612.1074383118214 
+            xmax = 612.3180941749231 
+            text = "go" 
+        intervals [202]:
+            xmin = 612.3180941749231 
+            xmax = 624.511935253345 
+            text = "" 
+        intervals [203]:
+            xmin = 624.511935253345 
+            xmax = 624.7541894959119 
+            text = "no" 
+        intervals [204]:
+            xmin = 624.7541894959119 
+            xmax = 626.1234526060727 
+            text = "" 
+        intervals [205]:
+            xmin = 626.1234526060727 
+            xmax = 626.544764332276 
+            text = "no" 
+        intervals [206]:
+            xmin = 626.544764332276 
+            xmax = 627.1977975078912 
+            text = "" 
+        intervals [207]:
+            xmin = 627.1977975078912 
+            xmax = 627.4189861641479 
+            text = "no" 
+        intervals [208]:
+            xmin = 627.4189861641479 
+            xmax = 629.188495414202 
+            text = "" 
+        intervals [209]:
+            xmin = 629.188495414202 
+            xmax = 629.451815243079 
+            text = "though" 
+        intervals [210]:
+            xmin = 629.451815243079 
             xmax = 3403.662562358277 
             text = "" 
     item [2]:
@@ -841,7 +897,7 @@ item []:
         name = "Speaker" 
         xmin = 0 
         xmax = 3403.662562358277 
-        intervals: size = 194 
+        intervals: size = 210 
         intervals [1]:
             xmin = 0 
             xmax = 5.591714337257244 
@@ -1616,6 +1672,70 @@ item []:
             text = "Lindsay" 
         intervals [194]:
             xmin = 607.2059897957124 
+            xmax = 608.4104279143872 
+            text = "" 
+        intervals [195]:
+            xmin = 608.4104279143872 
+            xmax = 608.642149363799 
+            text = "Lindsay" 
+        intervals [196]:
+            xmin = 608.642149363799 
+            xmax = 608.9476003652965 
+            text = "" 
+        intervals [197]:
+            xmin = 608.9476003652965 
+            xmax = 609.2319857804837 
+            text = "Lindsay" 
+        intervals [198]:
+            xmin = 609.2319857804837 
+            xmax = 609.9271501287192 
+            text = "" 
+        intervals [199]:
+            xmin = 609.9271501287192 
+            xmax = 610.2220683370615 
+            text = "Barbara" 
+        intervals [200]:
+            xmin = 610.2220683370615 
+            xmax = 612.1074383118214 
+            text = "" 
+        intervals [201]:
+            xmin = 612.1074383118214 
+            xmax = 612.3180941749231 
+            text = "Miles" 
+        intervals [202]:
+            xmin = 612.3180941749231 
+            xmax = 624.511935253345 
+            text = "" 
+        intervals [203]:
+            xmin = 624.511935253345 
+            xmax = 624.7541894959119 
+            text = "Lindsay" 
+        intervals [204]:
+            xmin = 624.7541894959119 
+            xmax = 626.1234526060727 
+            text = "" 
+        intervals [205]:
+            xmin = 626.1234526060727 
+            xmax = 626.544764332276 
+            text = "Barbara" 
+        intervals [206]:
+            xmin = 626.544764332276 
+            xmax = 627.1977975078912 
+            text = "" 
+        intervals [207]:
+            xmin = 627.1977975078912 
+            xmax = 627.4189861641479 
+            text = "Barbara" 
+        intervals [208]:
+            xmin = 627.4189861641479 
+            xmax = 629.188495414202 
+            text = "" 
+        intervals [209]:
+            xmin = 629.188495414202 
+            xmax = 629.451815243079 
+            text = "Barbara" 
+        intervals [210]:
+            xmin = 629.451815243079 
             xmax = 3403.662562358277 
             text = "" 
     item [7]:
