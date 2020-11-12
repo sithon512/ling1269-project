@@ -1,0 +1,176 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 3533.9874603174603 
+tiers? <exists> 
+size = 8 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "Word" 
+        xmin = 0 
+        xmax = 3533.9874603174603 
+        intervals: size = 13 
+        intervals [1]:
+            xmin = 0 
+            xmax = 73.66322261587878 
+            text = "" 
+        intervals [2]:
+            xmin = 73.66322261587878 
+            xmax = 74.11252817143433 
+            text = "cocaine" 
+        intervals [3]:
+            xmin = 74.11252817143433 
+            xmax = 77.95024379446902 
+            text = "" 
+        intervals [4]:
+            xmin = 77.95024379446902 
+            xmax = 78.1748965722468 
+            text = "so" 
+        intervals [5]:
+            xmin = 78.1748965722468 
+            xmax = 80.30207756183012 
+            text = "" 
+        intervals [6]:
+            xmin = 80.30207756183012 
+            xmax = 80.51970994030233 
+            text = "so" 
+        intervals [7]:
+            xmin = 80.51970994030233 
+            xmax = 86.1265644213433 
+            text = "" 
+        intervals [8]:
+            xmin = 86.1265644213433 
+            xmax = 86.34419679981552 
+            text = "so" 
+        intervals [9]:
+            xmin = 86.34419679981552 
+            xmax = 90.94011378085649 
+            text = "" 
+        intervals [10]:
+            xmin = 90.94011378085649 
+            xmax = 91.26305214891205 
+            text = "mouth" 
+        intervals [11]:
+            xmin = 91.26305214891205 
+            xmax = 600.030829969849 
+            text = "" 
+        intervals [12]:
+            xmin = 600.030829969849 
+            xmax = 607.0097025660028 
+            text = "STOP HERE" 
+        intervals [13]:
+            xmin = 607.0097025660028 
+            xmax = 3533.9874603174603 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "PreConst" 
+        xmin = 0 
+        xmax = 3533.9874603174603 
+        intervals: size = 1 
+        intervals [1]:
+            xmin = 0 
+            xmax = 3533.9874603174603 
+            text = "" 
+    item [3]:
+        class = "IntervalTier" 
+        name = "AftConst" 
+        xmin = 0 
+        xmax = 3533.9874603174603 
+        intervals: size = 1 
+        intervals [1]:
+            xmin = 0 
+            xmax = 3533.9874603174603 
+            text = "" 
+    item [4]:
+        class = "IntervalTier" 
+        name = "StdVowel" 
+        xmin = 0 
+        xmax = 3533.9874603174603 
+        intervals: size = 1 
+        intervals [1]:
+            xmin = 0 
+            xmax = 3533.9874603174603 
+            text = "" 
+    item [5]:
+        class = "IntervalTier" 
+        name = "ORaising" 
+        xmin = 0 
+        xmax = 3533.9874603174603 
+        intervals: size = 1 
+        intervals [1]:
+            xmin = 0 
+            xmax = 3533.9874603174603 
+            text = "" 
+    item [6]:
+        class = "IntervalTier" 
+        name = "Speaker" 
+        xmin = 0 
+        xmax = 3533.9874603174603 
+        intervals: size = 11 
+        intervals [1]:
+            xmin = 0 
+            xmax = 73.66322261587878 
+            text = "" 
+        intervals [2]:
+            xmin = 73.66322261587878 
+            xmax = 74.11252817143433 
+            text = "Blaine" 
+        intervals [3]:
+            xmin = 74.11252817143433 
+            xmax = 77.95024379446902 
+            text = "" 
+        intervals [4]:
+            xmin = 77.95024379446902 
+            xmax = 78.1748965722468 
+            text = "Texas" 
+        intervals [5]:
+            xmin = 78.1748965722468 
+            xmax = 80.30207756183012 
+            text = "" 
+        intervals [6]:
+            xmin = 80.30207756183012 
+            xmax = 80.51970994030233 
+            text = "Barbara" 
+        intervals [7]:
+            xmin = 80.51970994030233 
+            xmax = 86.1265644213433 
+            text = "" 
+        intervals [8]:
+            xmin = 86.1265644213433 
+            xmax = 86.34419679981552 
+            text = "Texas" 
+        intervals [9]:
+            xmin = 86.34419679981552 
+            xmax = 90.94011378085649 
+            text = "" 
+        intervals [10]:
+            xmin = 90.94011378085649 
+            xmax = 91.26305214891205 
+            text = "Blaine" 
+        intervals [11]:
+            xmin = 91.26305214891205 
+            xmax = 3533.9874603174603 
+            text = "" 
+    item [7]:
+        class = "IntervalTier" 
+        name = "PresentVowel" 
+        xmin = 0 
+        xmax = 3533.9874603174603 
+        intervals: size = 1 
+        intervals [1]:
+            xmin = 0 
+            xmax = 3533.9874603174603 
+            text = "" 
+    item [8]:
+        class = "IntervalTier" 
+        name = "Stressed" 
+        xmin = 0 
+        xmax = 3533.9874603174603 
+        intervals: size = 1 
+        intervals [1]:
+            xmin = 0 
+            xmax = 3533.9874603174603 
+            text = "" 
