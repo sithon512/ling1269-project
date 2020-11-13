@@ -1,7 +1,7 @@
 ####
 #### Praat script TextGridToCsv
-#### Version 1.0
-#### Version date: November 1, 2020
+#### Version 1.01
+#### Version date: November 12, 2020
 #### Dan Villarreal (d.vill@pitt.edu)
 ####
 #### Reads a TextGrid formatted for variationist coding and creates a csv file.
@@ -117,9 +117,10 @@ if numSelected > 1
 		numInts[tier] = Get number of intervals: tier
 	endfor
 	for ctr from 2 to numSelected
-		tier = selTier[ctr]
-		if numInts[tier] <> numInts[selTier[1]]
-			exitScript: "All selected tiers must have identical intervals. Detected differences between number of intervals in tiers 1 and " + string$(tier) + "."
+		tier1 = selTier[1]
+		tier2 = selTier[ctr]
+		if numInts[tier2] <> numInts[tier1]
+			exitScript: "All selected tiers must have identical intervals. Detected differences between number of intervals in tiers " + string$(tier1) + " and " + string$(tier2) + "."
 		endif
 	endfor
 	numInts = numInts[selTier[1]]
@@ -149,9 +150,11 @@ if numSelected > 1
 					
 					##Check filledness of labels
 					tier1Label$ = Get label of interval: tier1, int
-					tier1LabelFilled = (length(tier1Label$) > 0)
+					# tier1LabelFilled = (length(tier1Label$) > 0)
+					tier1LabelFilled = index_regex(tier1Label$, "\S")
 					tier2Label$ = Get label of interval: tier2, int
-					tier2LabelFilled = (length(tier2Label$) > 0)
+					# tier2LabelFilled = (length(tier2Label$) > 0)
+					tier2LabelFilled = index_regex(tier2Label$, "\S")
 					if tier1LabelFilled + tier2LabelFilled = 1
 						if tier1LabelFilled
 							tier1Status$ = "filled"
@@ -163,7 +166,7 @@ if numSelected > 1
 						else
 							tier2Status$ = "empty"
 						endif
-						exitScript: "All selected tiers must have identical intervals. In interval " + string$(int) ", tier " + string$(tier1) + " label is " + tier1Status$ + " and tier " + string$(tier2) + " label is " + tier2Status$ + "."
+						exitScript: "All selected tiers must have identical intervals. In interval " + string$(int) + ", tier " + string$(tier1) + " label is " + tier1Status$ + " and tier " + string$(tier2) + " label is " + tier2Status$ + "."
 					endif
 				endfor
 			endif
@@ -180,6 +183,7 @@ colNames$ = "TokenStart TokenEnd "
 for ctr from 1 to numSelected
 	tier = selTier[ctr]
 	tierName$[tier] = Get tier name: tier
+	tierName$[tier] = replace$(tierName$[tier], " ", "_", 0)
 	colNames$ += (tierName$[tier] + " ")
 endfor
 colNames$ = left$(colNames$, length(colNames$)-1)
