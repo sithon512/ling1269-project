@@ -2,7 +2,7 @@ Version: 1.0
 
 RestoreWorkspace: Yes
 SaveWorkspace: Yes
-AlwaysSaveHistory: Yes
+AlwaysSaveHistory: No
 
 EnableCodeIndexing: Yes
 UseSpacesForTab: Yes
