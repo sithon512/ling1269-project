@@ -1,0 +1,62 @@
+---
+title: "Ling 1269 Project - Checkpoint 5"
+author: "Jarod Latta"
+date: "11/15/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+
+toIPA = function(column) {
+  col = gsub("dz", "dʒ", column)
+  col = gsub("sh", "ʃ", col)
+  col = gsub("ng", "ŋ", col)
+  col = gsub("th", "θ", col)
+  col = gsub("eu", "əʊ", col)
+  col = gsub("uu", "ʌʊ", col)
+  col = gsub("ou", "oʊ", col)
+  col = gsub("au", "aʊ", col)
+  col = gsub("/e", "ə", col)
+  col = gsub("oi", "oɪ", col)
+  col = gsub("æu", "æʊ", col)
+  
+  col
+}
+```
+
+## Loading and Aggregating Data
+
+First we load in all of the data that collected from the podcast files.
+
+```{r loaddata}
+df2016 = as_tibble(read.csv("praat-coding/s1e01_29-09-2016.csv", stringsAsFactors = TRUE))
+df2017 = as_tibble(read.csv("praat-coding/s3e01_22-08-2017.csv", stringsAsFactors = TRUE))
+df2018 = as_tibble(read.csv("praat-coding/s5e01_03-07-2018.csv", stringsAsFactors = TRUE))
+df2019 = as_tibble(read.csv("praat-coding/s3e01_22-08-2017.csv", stringsAsFactors = TRUE))
+```
+
+Now that with this data, we now need to stack these dataframes (without losing the date information).
+
+```{r addDateConcat}
+df2016 = df2016 %>% mutate(Year = "2016")
+df2017 = df2017 %>% mutate(Year = "2017")
+df2018 = df2018 %>% mutate(Year = "2018")
+df2019 = df2019 %>% mutate(Year = "2019")
+df = bind_rows(df2016, df2017) %>% bind_rows(df2018) %>% bind_rows(df2019)
+```
+
+```{r checkDf}
+df
+```
+
+Now that we have all of the data read in, we can clean up the data. First thing's first, let's convert all of the pseudo-IPA coding that I did to make working in and exporting from Praat work into actual IPA.
+
+```{r cleanIPA}
+df %>% 
+  mutate(PreConst = factor(toIPA(df$PreConst))) %>% 
+  mutate(AftConst = factor(toIPA(df$AftConst))) %>% 
+  mutate(StdVowel = factor(toIPA(df$StdVowel))) %>% 
+  mutate(PresentVowel = factor(toIPA(df$PresentVowel)))
+```
