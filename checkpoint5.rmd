@@ -26,7 +26,9 @@ toIPA = function(column) {
 }
 ```
 
-## Loading and Aggregating Data
+# Checkpoint 5
+
+## Loading & Aggregating Data
 
 First we load in all of the data that collected from the podcast files.
 
@@ -54,9 +56,37 @@ df
 Now that we have all of the data read in, we can clean up the data. First thing's first, let's convert all of the pseudo-IPA coding that I did to make working in and exporting from Praat work into actual IPA.
 
 ```{r cleanIPA}
-df %>% 
-  mutate(PreConst = factor(toIPA(df$PreConst))) %>% 
-  mutate(AftConst = factor(toIPA(df$AftConst))) %>% 
-  mutate(StdVowel = factor(toIPA(df$StdVowel))) %>% 
-  mutate(PresentVowel = factor(toIPA(df$PresentVowel)))
+df = df %>% 
+  mutate(PreConst = factor(toIPA(PreConst))) %>% 
+  mutate(AftConst = factor(toIPA(AftConst))) %>% 
+  mutate(StdVowel = factor(toIPA(StdVowel))) %>% 
+  mutate(PresentVowel = factor(toIPA(PresentVowel)))
+```
+
+We will also want to fix any little weird typos I made while coding (such as capitalization differences for the same word).
+
+```{r cleanCap}
+df = df %>% 
+  mutate(Word = factor(gsub("Episode", "episode", Word))) %>% 
+  mutate(Word = factor(gsub("Hello", "hello", Word))) %>% 
+  mutate(Word = factor(gsub("Open", "open", Word)))
+```
+
+## Plotting & Analyzing Data
+
+Now that our data is clean, we'll want to analyze what we have starting with the question, does Barbara produce Canadian Rising more frequently than the other non-Canadian English speakers.
+
+```{r rateOfRaising}
+barbVsAll = df %>% 
+  select(Speaker, ORaising, StdVowel, PresentVowel) %>% 
+  mutate(Speaker = factor(ifelse(Speaker != "Barbara", "Other", "Barbara")))
+barbVsAll
+
+barbVsAll %>%
+  ggplot(aes(x=StdVowel, fill=ORaising)) +
+  geom_bar(position="fill") +
+  facet_wrap(vars(Speaker)) +
+  coord_flip() +
+  labs(title = "Rate of Canadian Rising by Standard Diphthong", subtitle = "Barbara vs All") +
+  ylab("Rate") + xlab("Standard Diphthong")
 ```
