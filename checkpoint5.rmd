@@ -24,6 +24,8 @@ toIPA = function(column) {
   
   col
 }
+
+#getConstType = function() {}
 ```
 
 # Checkpoint 5
@@ -74,13 +76,33 @@ df = df %>%
 
 ## Plotting & Analyzing Data
 
-Now that our data is clean, we'll want to analyze what we have starting with the question, does Barbara produce Canadian Raising more frequently than the other non-Canadian English speakers.
+### Understanding Canadian Raising
+
+Before we look at speech production for Canadian Raising, we'll want to fully understand what that is. In the broadest sense, it is the stereotype of Canadian English Speakers saying "aboot" instead of "about". Now more scientifically, very few (if any body) actually says *"aboot"*, but the real change here is the vowel "æʊ" moving to be more like "ʌʊ" or even "əʊ". With this example, we can see the *raising* of the first part of the diphthong æ up to ʌ or ə. The other part of Canadian Raising involves the "oʊ" or "aʊ" vowel moving towards the same "ʌʊ" or "əʊ". This is less of an upward movement in the vowel space and more of a forward movement (even moving slightly down in the case of oʊ).
+
+Let's look at the context where this phenomena occurs:
+
+```{r}
+levels(df$PreConst)
+```
+
+```{r raisingConstraints}
+context = df %>% 
+  select(PreConst, AftConst, ORaising, Stressed) %>% 
+  mutate(PreType = factor(ifelse(PreType %in% c("ʃ", "s", "θ"), "voiceless fricative", ifelse(
+    PreType %in% c("")
+  ))))
+```
+
+### Exploring Raising
+
+Now that our data is clean and we have our understanding of what Canadian Raising is, we'll want to analyze what we have starting with the question, does Barbara produce Canadian Raising more frequently than the other (non-Canadian English) speakers?
 
 ```{r rateOfRaising}
 barbVsAll = df %>% 
   select(Speaker, ORaising, StdVowel, PresentVowel) %>% 
   mutate(Speaker = factor(ifelse(Speaker != "Barbara", "Other", "Barbara")))
-barbVsAll
+#barbVsAll
 
 barbVsAll %>%
   ggplot(aes(x=StdVowel, fill=ORaising)) +
@@ -97,7 +119,7 @@ From this plot, we can see that Barbara exhibits raising significantly more than
 barbVsTime = df %>% 
   select(Speaker, ORaising, StdVowel, PresentVowel, Year) %>% 
   filter(Speaker == "Barbara")
-barbVsTime
+#barbVsTime
 
 barbVsTime %>% 
   ggplot(aes(x=StdVowel, fill=ORaising)) +
