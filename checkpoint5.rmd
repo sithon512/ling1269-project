@@ -74,7 +74,7 @@ df = df %>%
 
 ## Plotting & Analyzing Data
 
-Now that our data is clean, we'll want to analyze what we have starting with the question, does Barbara produce Canadian Rising more frequently than the other non-Canadian English speakers.
+Now that our data is clean, we'll want to analyze what we have starting with the question, does Barbara produce Canadian Raising more frequently than the other non-Canadian English speakers.
 
 ```{r rateOfRaising}
 barbVsAll = df %>% 
@@ -87,6 +87,28 @@ barbVsAll %>%
   geom_bar(position="fill") +
   facet_wrap(vars(Speaker)) +
   coord_flip() +
-  labs(title = "Rate of Canadian Rising by Standard Diphthong", subtitle = "Barbara vs All") +
+  labs(title = "Rate of Canadian Raising by Standard Diphthong", subtitle = "Barbara vs All") +
   ylab("Rate") + xlab("Standard Diphthong")
 ```
+
+From this plot, we can see that Barbara exhibits raising significantly more than the other speakers. Note that this information does not take any year distinctions into account. Now we'll look at the difference of her Candadian Raising over the course of four years (2016-2019).
+
+```{r plot}
+barbVsTime = df %>% 
+  select(Speaker, ORaising, StdVowel, PresentVowel, Year) %>% 
+  filter(Speaker == "Barbara")
+barbVsTime
+
+barbVsTime %>% 
+  ggplot(aes(x=StdVowel, fill=ORaising)) +
+  geom_bar(position="fill") +
+  facet_wrap(vars(Year), nrow=1, ncol=4) +
+  coord_flip() +
+  labs(title = "Rate of Canadian Raising by Standard Diphthong", subtitle = "Barbara Over Time") +
+  ylab("Rate") + xlab("Standard Diphthong") +
+  theme(axis.text.x = element_text(angle=45))
+```
+
+Looking at this plot, we see some interesting things that I'm not fully able to explain. First, why do we have no tokens for "æʊ" in 2017 or 2019? This is simply a fluke. The sections of podcast that I coded for were lacking in this specific variable in those years. If this study were to be done on a larger scale, I would code for a greater amount of time and would (almost) certainly acquire tokens.
+
+The next most interesting thing is the rate of raising for the "æʊ" value. Perhaps not ironically, this is also the ABOUT vowel that is used for the stereotype of Canadian Raising, so it is quite fascinating to see her rate of raising half. I have to concede that there might again be sample bias here. Barbara has lived in the United States for about 10 years, so for her to *still* be producing raising on the "æʊ" vowel in 2016 at a rate of 100% seems quite unlikely, especially seeing it drop to about 55% in 2018.
