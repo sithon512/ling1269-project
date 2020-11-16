@@ -74,17 +74,10 @@ df = df %>%
   mutate(Word = factor(gsub("Open", "open", Word)))
 ```
 
-## Plotting & Analyzing Data
+Let's also add in PreType and AftType so we can use them easily later.
 
-### Understanding Canadian Raising
-
-Before we look at speech production for Canadian Raising, we'll want to fully understand what that is. In the broadest sense, it is the stereotype of Canadian English Speakers saying "aboot" instead of "about". Now more scientifically, very few (if any body) actually says *"aboot"*, but the real change here is the vowel "æʊ" moving to be more like "ʌʊ" or even "əʊ". With this example, we can see the *raising* of the first part of the diphthong æ up to ʌ or ə. The other part of Canadian Raising involves the "oʊ" or "aʊ" vowel moving towards the same "ʌʊ" or "əʊ". This is less of an upward movement in the vowel space and more of a forward movement (even moving slightly down in the case of oʊ).
-
-Let's look at the context where this phenomena occurs:
-
-```{r raisingConstraints}
-context = df %>% 
-  select(PreConst, AftConst, ORaising, Stressed) %>% 
+```{r derivedVariables}
+df = df %>% 
   # specify the manner of the preceding consonant
   mutate(PreType = ifelse(PreConst %in% c("ʃ", "s", "θ", "f", "h"), "voiceless fricative", ifelse(
     PreConst %in% c("ŋ", "n", "m"), "nasal", ifelse(
@@ -123,6 +116,86 @@ context = df %>%
       )
     )
   )))
+```
+
+We're left with this data frame as our result of all of this cleaning and combining.
+
+```{r flashDf}
+head(as.data.frame(df))
+```
+
+## Plotting & Analyzing Data
+
+### Examining Each Constraint on Raising
+
+Let's just examine the effect of each constraint individually.
+
+```{r individualConstraints}
+preConstRaise = df %>% 
+  ggplot(aes(x=PreConst, fill=ORaising)) +
+  geom_bar(position="fill") +
+  coord_flip() +
+  xlab(element_blank()) + ylab(element_blank()) +
+  labs(title="Preceding Consonant on Raising") +
+  scale_fill_discrete(name="Raising")
+
+preTypeRaise = df %>% 
+  ggplot(aes(x=PreType, fill=ORaising)) +
+  geom_bar(position="fill") +
+  coord_flip() +
+  xlab(element_blank()) + ylab(element_blank()) +
+  labs(title="Preceding Consonant Type on Raising") +
+  scale_fill_discrete(name="Raising")
+
+aftConstRaise = df %>% 
+  ggplot(aes(x=AftConst, fill=ORaising)) +
+  geom_bar(position="fill") +
+  coord_flip() +
+  xlab(element_blank()) + ylab(element_blank()) +
+  labs(title="Following Consonant on Raising") +
+  scale_fill_discrete(name="Raising")
+
+aftTypeRaise = df %>% 
+  ggplot(aes(x=AftType, fill=ORaising)) +
+  geom_bar(position="fill") +
+  coord_flip() +
+  xlab(element_blank()) + ylab(element_blank()) +
+  labs(title="Following Consonant Type on Raising") +
+  scale_fill_discrete(name="Raising")
+
+stdVowelRaise = df %>% 
+  ggplot(aes(x=StdVowel, fill=ORaising)) +
+  geom_bar(position="fill") +
+  coord_flip() +
+  xlab(element_blank()) + ylab(element_blank()) +
+  labs(title="Standard Vowel's on Raising") +
+  scale_fill_discrete(name="Raising")
+
+stressRaise = df %>% 
+  ggplot(aes(x=Stressed, fill=ORaising)) +
+  geom_bar(position="fill") +
+  coord_flip() +
+  xlab(element_blank()) + ylab(element_blank()) +
+  labs(title="Syllable Stress on Raising") +
+  scale_fill_discrete(name="Raising")
+
+preConstRaise
+preTypeRaise
+aftConstRaise
+aftTypeRaise
+stdVowelRaise
+stressRaise
+```
+
+### Understanding Canadian Raising
+
+Before we look at speech production for Canadian Raising, we'll want to fully understand what that is. In the broadest sense, it is the stereotype of Canadian English Speakers saying "aboot" instead of "about". Now more scientifically, very few (if any body) actually says *"aboot"*, but the real change here is the vowel "æʊ" moving to be more like "ʌʊ" or even "əʊ". With this example, we can see the *raising* of the first part of the diphthong æ up to ʌ or ə. The other part of Canadian Raising involves the "oʊ" or "aʊ" vowel moving towards the same "ʌʊ" or "əʊ". This is less of an upward movement in the vowel space and more of a forward movement (even moving slightly down in the case of oʊ).
+
+Let's look at the context where this phenomena occurs:
+
+```{r raisingConstraints}
+context = df %>% 
+  select(PreConst, AftConst, PreType, AftType, ORaising, Stressed)
 
 rateByPreType = context %>%
   ggplot(aes(x=PreType, fill=ORaising)) +
@@ -211,6 +284,13 @@ Looking at this plot, we see some interesting things that I'm not fully able to 
 The next most interesting thing is the rate of raising for the "æʊ" value. Perhaps not ironically, this is also the ABOUT vowel that is used for the stereotype of Canadian Raising, so it is quite fascinating to see her rate of raising half. I have to concede that there might again be sample bias here. Barbara has lived in the United States for about 10 years, so for her to *still* be producing raising on the "æʊ" vowel in 2016 at a rate of 100% seems quite unlikely, especially seeing it drop to about 55% in 2018.
 
 ```{r savePlots, include=FALSE}
+ggsave("plots/cp5/preConstRaise.png", plot=preConstRaise)
+ggsave("plots/cp5/preTypeRaise.png",  plot=preTypeRaise)
+ggsave("plots/cp5/aftConstRaise.png", plot=aftConstRaise)
+ggsave("plots/cp5/aftTypeRaise.png",  plot=aftTypeRaise)
+ggsave("plots/cp5/stdVowelRaise.png", plot=stdVowelRaise)
+ggsave("plots/cp5/stressRaise.png",   plot=stressRaise)
+
 ggsave("plots/cp5/rateByPreType.png",       plot=rateByPreType)
 ggsave("plots/cp5/rateByAftType.png",       plot=rateByAftType)
 ggsave("plots/cp5/rateByPreAndAftType.png", plot=rateByPreAndAftType)
