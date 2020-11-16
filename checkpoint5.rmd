@@ -175,7 +175,7 @@ barbVsAll = df %>%
   mutate(Speaker = factor(ifelse(Speaker != "Barbara", "Other", "Barbara")))
 #barbVsAll
 
-barbVsAll %>%
+barbRateVsAll = barbVsAll %>%
   ggplot(aes(x=StdVowel, fill=ORaising)) +
   geom_bar(position="fill") +
   facet_wrap(vars(Speaker)) +
@@ -183,6 +183,7 @@ barbVsAll %>%
   labs(title = "Rate of Canadian Raising by Standard Diphthong", subtitle = "Barbara vs All") +
   ylab(element_blank()) + xlab(element_blank()) + # remove axis labels bc unnecessary
   scale_fill_discrete(name="Raising") # change legend title
+barbRateVsAll
 ```
 
 From this plot, we can see that Barbara exhibits raising significantly more than the other speakers. Note that this information does not take any year distinctions into account. Now we'll look at the difference of her Candadian Raising over the course of four years (2016-2019).
@@ -193,7 +194,7 @@ barbVsTime = df %>%
   filter(Speaker == "Barbara")
 #barbVsTime
 
-barbVsTime %>% 
+barbRateVsTime = barbVsTime %>% 
   ggplot(aes(x=StdVowel, fill=ORaising)) +
   geom_bar(position="fill") +
   facet_wrap(vars(Year), nrow=1, ncol=4) +
@@ -202,6 +203,7 @@ barbVsTime %>%
   ylab(element_blank()) + xlab(element_blank()) + # remove redundant axes
   theme(axis.text.x = element_text(angle=45)) +
   scale_fill_discrete(name="Raising") # set legend title
+barbRateVsTime
 ```
 
 Looking at this plot, we see some interesting things that I'm not fully able to explain. First, why do we have no tokens for "æʊ" in 2017 or 2019? This is simply a fluke. The sections of podcast that I coded for were lacking in this specific variable in those years. If this study were to be done on a larger scale, I would code for a greater amount of time and would (almost) certainly acquire tokens.
@@ -209,7 +211,9 @@ Looking at this plot, we see some interesting things that I'm not fully able to 
 The next most interesting thing is the rate of raising for the "æʊ" value. Perhaps not ironically, this is also the ABOUT vowel that is used for the stereotype of Canadian Raising, so it is quite fascinating to see her rate of raising half. I have to concede that there might again be sample bias here. Barbara has lived in the United States for about 10 years, so for her to *still* be producing raising on the "æʊ" vowel in 2016 at a rate of 100% seems quite unlikely, especially seeing it drop to about 55% in 2018.
 
 ```{r savePlots, include=FALSE}
-ggsave("plots/rateByPreType.png", plot=rateByPreType)
-ggsave("plots/rateByAftType.png", plot=rateByAftType)
+ggsave("plots/rateByPreType.png",       plot=rateByPreType)
+ggsave("plots/rateByAftType.png",       plot=rateByAftType)
 ggsave("plots/rateByPreAndAftType.png", plot=rateByPreAndAftType)
+ggsave("plots/barbRateVsAll.png",       plot=barbRateVsAll)
+ggsave("plots/barbRateVsTime.png",      plot=barbRateVsTime)
 ```
