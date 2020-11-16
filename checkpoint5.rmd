@@ -51,7 +51,7 @@ df2019 = df2019 %>% mutate(Year = "2019")
 df = bind_rows(df2016, df2017) %>% bind_rows(df2018) %>% bind_rows(df2019)
 ```
 
-```{r checkDf}
+```{r checkDf, include=FALSE}
 df
 ```
 
@@ -82,17 +82,85 @@ Before we look at speech production for Canadian Raising, we'll want to fully un
 
 Let's look at the context where this phenomena occurs:
 
-```{r}
-levels(df$PreConst)
-```
-
 ```{r raisingConstraints}
 context = df %>% 
   select(PreConst, AftConst, ORaising, Stressed) %>% 
-  mutate(PreType = factor(ifelse(PreType %in% c("ʃ", "s", "θ"), "voiceless fricative", ifelse(
-    PreType %in% c("")
-  ))))
+  # specify the manner of the preceding consonant
+  mutate(PreType = ifelse(PreConst %in% c("ʃ", "s", "θ", "f", "h"), "voiceless fricative", ifelse(
+    PreConst %in% c("ŋ", "n", "m"), "nasal", ifelse(
+      PreConst %in% c("ð", "z", "v"), "voiced fricative", ifelse(
+        PreConst %in% c("b", "d", "dʒ"), "voiced plosive", ifelse(
+          PreConst %in% c("p", "t"), "voiceless plosive", ifelse(
+            PreConst %in% c("g"), "voiced velar", ifelse(
+              PreConst %in% c("k"), "voiceless velar", ifelse(
+                PreConst %in% c("l"), "approximant", ifelse(
+                  PreConst %in% c("w", "j"), "glide", "boundary"
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  ))) %>% 
+  # specify the manner of the following consonant
+  mutate(AftType = ifelse(AftConst %in% c("ʃ", "s", "θ", "f"), "voiceless fricative", ifelse(
+    AftConst %in% c("ŋ", "n", "m"), "nasal", ifelse(
+      AftConst %in% c("ð", "z", "v"), "voiced fricative", ifelse(
+        AftConst %in% c("b", "d", "dʒ"), "voiced plosive", ifelse(
+          AftConst %in% c("p", "t"), "voiceless plosive", ifelse(
+            AftConst %in% c("g"), "voiced velar", ifelse(
+              AftConst %in% c("k"), "voiceless velar", ifelse(
+                AftConst %in% c("l"), "approximant", ifelse(
+                  AftConst %in% c("w", "j"), "glide", ifelse(
+                    AftConst %in% c("tʃ"), "voiceless affricate", "boundary"
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )))
+
+context %>%
+  ggplot(aes(x=PreType, fill=ORaising)) +
+  geom_bar(position="fill") +
+  coord_flip() +
+  labs(title = "Rate of Raised Vowels by Preceding Consonant") +
+  xlab(element_blank()) + ylab(element_blank()) + 
+  scale_fill_discrete(name="Raising")
+
+context %>% 
+  ggplot(aes(x=AftType, fill=ORaising)) +
+  geom_bar(position="fill") +
+  coord_flip() +
+  labs(title = "Rate of Raised Vowels by Following Consonant") +
+  xlab(element_blank()) + ylab(element_blank()) + 
+  scale_fill_discrete(name="Raising")
 ```
+
+So we can see that our highest rate of raising happens when the preceding consonant is a voiceless plosive, a voiced velar, a voiceless fricative, or doesn't exist. Additionally, we can see that the following consonant type doesn't seem to matter a whole lot. We have a pretty steady distribution of raising among voiceless velars and plosives, voiced plosives and fricatives, and glides for the following consonant. What do those have in common? Not a whole lot considering we don't have nearly as high a rate of raised vowels for voiceless fricatives or voiced velars. This could be a sample bias, or it could be representative of the larger, true statistic. Considering the quantity of tokens in a fairly free environment (in terms of what words might appear), my guess is that this data is representative of the larger statistic because English doesn't have a perfectly even distribution of all vowels, consonants, and words appear in its sentences.
+
+Let's narrow down to just these most frequent types and see if we don't have a better understanding of the exact context.
+
+```{r narrowContext}
+narrowedContext = context %>% 
+  filter(ORaising == TRUE) %>% 
+  filter(PreType %in% c("voiceless plosive", "voiceless fricative", "voiced velar", "boundary")) %>% 
+  filter(AftType %in% c("voiceless velar", "voiceless plosive", "voiced plosive", "voiced fricative", "glide"))
+
+narrowedContext %>% 
+  ggplot(aes(x=PreType, fill=AftType)) +
+  geom_bar(position="fill") +
+  coord_flip() +
+  xlab(element_blank()) + ylab(element_blank()) +
+  labs(title="Occurences of Vowel Raising Preceding Consonant", subtitle="Subdivided According to Following Consonant") +
+  scale_fill_discrete(name="Following Consonant")
+```
+
+Okay, so that gives us quite a bit better of a context. These are the most common places for raising to occur, which gives us voiceless plosives and fricatives followed by plosives, voiced fricatives, voiceless velars, or glides.
 
 ### Exploring Raising
 
