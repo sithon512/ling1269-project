@@ -211,9 +211,9 @@ Looking at this plot, we see some interesting things that I'm not fully able to 
 The next most interesting thing is the rate of raising for the "æʊ" value. Perhaps not ironically, this is also the ABOUT vowel that is used for the stereotype of Canadian Raising, so it is quite fascinating to see her rate of raising half. I have to concede that there might again be sample bias here. Barbara has lived in the United States for about 10 years, so for her to *still* be producing raising on the "æʊ" vowel in 2016 at a rate of 100% seems quite unlikely, especially seeing it drop to about 55% in 2018.
 
 ```{r savePlots, include=FALSE}
-ggsave("plots/rateByPreType.png",       plot=rateByPreType)
-ggsave("plots/rateByAftType.png",       plot=rateByAftType)
-ggsave("plots/rateByPreAndAftType.png", plot=rateByPreAndAftType)
-ggsave("plots/barbRateVsAll.png",       plot=barbRateVsAll)
-ggsave("plots/barbRateVsTime.png",      plot=barbRateVsTime)
+ggsave("plots/cp5/rateByPreType.png",       plot=rateByPreType)
+ggsave("plots/cp5/rateByAftType.png",       plot=rateByAftType)
+ggsave("plots/cp5/rateByPreAndAftType.png", plot=rateByPreAndAftType)
+ggsave("plots/cp5/barbRateVsAll.png",       plot=barbRateVsAll)
+ggsave("plots/cp5/barbRateVsTime.png",      plot=barbRateVsTime)
 ```
