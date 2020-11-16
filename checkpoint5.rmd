@@ -124,21 +124,23 @@ context = df %>%
     )
   )))
 
-context %>%
+rateByPreType = context %>%
   ggplot(aes(x=PreType, fill=ORaising)) +
   geom_bar(position="fill") +
   coord_flip() +
   labs(title = "Rate of Raised Vowels by Preceding Consonant") +
   xlab(element_blank()) + ylab(element_blank()) + 
   scale_fill_discrete(name="Raising")
+rateByPreType
 
-context %>% 
+rateByAftType = context %>% 
   ggplot(aes(x=AftType, fill=ORaising)) +
   geom_bar(position="fill") +
   coord_flip() +
   labs(title = "Rate of Raised Vowels by Following Consonant") +
   xlab(element_blank()) + ylab(element_blank()) + 
   scale_fill_discrete(name="Raising")
+rateByAftType
 ```
 
 So we can see that our highest rate of raising happens when the preceding consonant is a voiceless plosive, a voiced velar, a voiceless fricative, or doesn't exist. Additionally, we can see that the following consonant type doesn't seem to matter a whole lot. We have a pretty steady distribution of raising among voiceless velars and plosives, voiced plosives and fricatives, and glides for the following consonant. What do those have in common? Not a whole lot considering we don't have nearly as high a rate of raised vowels for voiceless fricatives or voiced velars. This could be a sample bias, or it could be representative of the larger, true statistic. Considering the quantity of tokens in a fairly free environment (in terms of what words might appear), my guess is that this data is representative of the larger statistic because English doesn't have a perfectly even distribution of all vowels, consonants, and words appear in its sentences.
@@ -151,13 +153,14 @@ narrowedContext = context %>%
   filter(PreType %in% c("voiceless plosive", "voiceless fricative", "voiced velar", "boundary")) %>% 
   filter(AftType %in% c("voiceless velar", "voiceless plosive", "voiced plosive", "voiced fricative", "glide"))
 
-narrowedContext %>% 
+rateByPreAndAftType = narrowedContext %>% 
   ggplot(aes(x=PreType, fill=AftType)) +
   geom_bar(position="fill") +
   coord_flip() +
   xlab(element_blank()) + ylab(element_blank()) +
   labs(title="Occurences of Vowel Raising Preceding Consonant", subtitle="Subdivided According to Following Consonant") +
   scale_fill_discrete(name="Following Consonant")
+rateByPreAndAftType
 ```
 
 Okay, so that gives us quite a bit better of a context. These are the most common places for raising to occur, which gives us voiceless plosives and fricatives followed by plosives, voiced fricatives, voiceless velars, or glides.
@@ -204,3 +207,9 @@ barbVsTime %>%
 Looking at this plot, we see some interesting things that I'm not fully able to explain. First, why do we have no tokens for "æʊ" in 2017 or 2019? This is simply a fluke. The sections of podcast that I coded for were lacking in this specific variable in those years. If this study were to be done on a larger scale, I would code for a greater amount of time and would (almost) certainly acquire tokens.
 
 The next most interesting thing is the rate of raising for the "æʊ" value. Perhaps not ironically, this is also the ABOUT vowel that is used for the stereotype of Canadian Raising, so it is quite fascinating to see her rate of raising half. I have to concede that there might again be sample bias here. Barbara has lived in the United States for about 10 years, so for her to *still* be producing raising on the "æʊ" vowel in 2016 at a rate of 100% seems quite unlikely, especially seeing it drop to about 55% in 2018.
+
+```{r savePlots, include=FALSE}
+ggsave("plots/rateByPreType.png", plot=rateByPreType)
+ggsave("plots/rateByAftType.png", plot=rateByAftType)
+ggsave("plots/rateByPreAndAftType.png", plot=rateByPreAndAftType)
+```
