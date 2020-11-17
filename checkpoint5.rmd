@@ -55,7 +55,7 @@ df = bind_rows(df2016, df2017) %>% bind_rows(df2018) %>% bind_rows(df2019)
 df
 ```
 
-Now that we have all of the data read in, we can clean up the data. First thing's first, let's convert all of the pseudo-IPA coding that I did to make working in and exporting from Praat work into actual IPA.
+Now that we have all of the data read in, we can clean up the data. First thing's first, let's convert all of the pseudo-IPA coding that I did into actual IPA.
 
 ```{r cleanIPA}
 df = df %>% 
@@ -65,7 +65,7 @@ df = df %>%
   mutate(PresentVowel = factor(toIPA(PresentVowel)))
 ```
 
-We will also want to fix any little weird typos I made while coding (such as capitalization differences for the same word).
+We will also want to fix any little weird typos I made while coding (such as capitalization differences for the same word). Luckily, there are only a few of these.
 
 ```{r cleanCap}
 df = df %>% 
