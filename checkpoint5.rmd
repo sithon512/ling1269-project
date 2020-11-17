@@ -283,6 +283,22 @@ Looking at this plot, we see some interesting things that I'm not fully able to 
 
 The next most interesting thing is the rate of raising for the "æʊ" value. Perhaps not ironically, this is also the ABOUT vowel that is used for the stereotype of Canadian Raising, so it is quite fascinating to see her rate of raising half. I have to concede that there might again be sample bias here. Barbara has lived in the United States for about 10 years, so for her to *still* be producing raising on the "æʊ" vowel in 2016 at a rate of 100% seems quite unlikely, especially seeing it drop to about 55% in 2018.
 
+When we do have raising, let's examine how these shifts happen and which are most frequent.
+
+```{r raisingComparison}
+raisingComparison = df %>% 
+  filter(ORaising==TRUE) %>% 
+  mutate(Speaker = factor(ifelse(Speaker=="Barbara", "Barbara", "Other"))) %>% 
+  ggplot(aes(x=StdVowel, fill=PresentVowel)) +
+  geom_bar(position="fill") +
+  facet_wrap(vars(Speaker)) +
+  coord_flip() +
+  xlab(element_blank()) + ylab(element_blank()) +
+  labs(title="Rate of Standard Vowel by Produced Vowel", subtitle="Subdivided for Barbara vs the Other Speakers") +
+  scale_fill_discrete(name="Produced Vowel")
+raisingComparison
+```
+
 ```{r savePlots, include=FALSE}
 ggsave("plots/cp5/preConstRaise.png", plot=preConstRaise)
 ggsave("plots/cp5/preTypeRaise.png",  plot=preTypeRaise)
@@ -296,4 +312,6 @@ ggsave("plots/cp5/rateByAftType.png",       plot=rateByAftType)
 ggsave("plots/cp5/rateByPreAndAftType.png", plot=rateByPreAndAftType)
 ggsave("plots/cp5/barbRateVsAll.png",       plot=barbRateVsAll)
 ggsave("plots/cp5/barbRateVsTime.png",      plot=barbRateVsTime)
+
+ggsave("plots/cp5/raisingComparison.png", plot=raisingComparison)
 ```
