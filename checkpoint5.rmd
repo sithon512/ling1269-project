@@ -10,17 +10,17 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 
 toIPA = function(column) {
-  col = gsub("dz", "dʒ", column)
-  col = gsub("sh", "ʃ", col)
-  col = gsub("ng", "ŋ", col)
-  col = gsub("th", "θ", col)
-  col = gsub("eu", "əʊ", col)
-  col = gsub("uu", "ʌʊ", col)
-  col = gsub("ou", "oʊ", col)
-  col = gsub("au", "aʊ", col)
-  col = gsub("/e", "ə", col)
+  col = gsub("dz", "d\U0292", column) #ʒ
+  col = gsub("sh", "\U0283", col) #ʃ
+  col = gsub("ng", "\U014B", col) #ŋ
+  col = gsub("th", "\U03B8", col) #θ
+  col = gsub("eu", "\U0259\U028A", col) #ʊ
+  col = gsub("uu", "\U028C\U028A", col) #ʌʊ
+  col = gsub("ou", "o\U028A", col) #ʊ
+  col = gsub("au", "a\U028A", col) #ʊ
+  col = gsub("/e", "\U0259", col) #ə
   col = gsub("oi", "oɪ", col)
-  col = gsub("æu", "æʊ", col)
+  col = gsub("æu", "æ\U028A", col) #ʊ
   
   col
 }
